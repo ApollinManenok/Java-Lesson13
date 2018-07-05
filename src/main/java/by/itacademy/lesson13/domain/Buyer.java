@@ -1,6 +1,6 @@
 package by.itacademy.lesson13.domain;
 
-import by.itacademy.lesson13.product.Product;
+import by.itacademy.lesson13.domain.product.Product;
 
 import java.util.Set;
 

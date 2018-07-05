@@ -1,7 +1,7 @@
 package by.itacademy.lesson13.builders;
 
 import by.itacademy.lesson13.domain.Buyer;
-import by.itacademy.lesson13.product.Product;
+import by.itacademy.lesson13.domain.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashSet;

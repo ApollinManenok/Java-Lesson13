@@ -1,4 +1,4 @@
-package by.itacademy.lesson13.product;
+package by.itacademy.lesson13.domain.product;
 
 public class TV extends Product {
     public TV() {
