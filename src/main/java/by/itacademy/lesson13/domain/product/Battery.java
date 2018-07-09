@@ -2,7 +2,7 @@ package by.itacademy.lesson13.domain.product;
 
 public class Battery extends Product {
     public Battery() {
-        super(0);
+        super(20);
     }
 
     public Battery(int cost) {
@@ -10,7 +10,7 @@ public class Battery extends Product {
     }
 
     @Override
-    public String toString() {
-        return "Battery cost: "+getCost();
+    public String typo() {
+        return "Battery";
     }
 }

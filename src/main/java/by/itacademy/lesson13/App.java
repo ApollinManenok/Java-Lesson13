@@ -1,20 +1,22 @@
 package by.itacademy.lesson13;
 
-import by.itacademy.lesson13.domain.BuyerQueue;
-import by.itacademy.lesson13.runnable.Cashbox;
-import by.itacademy.lesson13.runnable.Consumerizer;
+import by.itacademy.lesson13.buyerqueue.BuyerQueueChoice;
+import by.itacademy.lesson13.buyerqueue.RangeException;
+import by.itacademy.lesson13.domain.Shop;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
+    private static final Logger LOGGER = Logger.getLogger(App.class.getName());
+
     public static void main(String[] args) {
-        BuyerQueue buyers = new BuyerQueue();
-        Thread consumerizer = new Thread(new Consumerizer(buyers, 20, 5));
-        consumerizer.start();
-        for (int i = 0; i < 3; i++) {
-            Thread cashbox = new Thread(new Cashbox(buyers, 0));
-            cashbox.setDaemon(true);
-            cashbox.setName("Cashbox " + (i + 1));
-            cashbox.start();
+        Shop shop = null;
+        try {
+            shop = new Shop(new BuyerQueueChoice().choose());
+            shop.service();
+        } catch (RangeException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
         }
-        new Thread(new Consumerizer(buyers, 20, 5)).start();
     }
 }

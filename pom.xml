@@ -82,7 +82,15 @@
                     <goal>java</goal>
                 </goals>
                 <configuration>
-                    <mainClass>by.itacademy.lesson13.App</mainClass>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>
+                            -Djava.util.logging.config.file=logging.properties
+                        </argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>by.itacademy.lesson13.App</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>

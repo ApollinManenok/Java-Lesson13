@@ -14,4 +14,11 @@ public abstract class Product {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    public abstract String typo();
+
+    @Override
+    public String toString() {
+        return typo() + " cost: " + cost;
+    }
 }

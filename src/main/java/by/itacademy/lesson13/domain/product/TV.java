@@ -2,7 +2,7 @@ package by.itacademy.lesson13.domain.product;
 
 public class TV extends Product {
     public TV() {
-        super(0);
+        super(4000);
     }
 
     public TV(int cost) {
@@ -10,7 +10,7 @@ public class TV extends Product {
     }
 
     @Override
-    public String toString() {
-        return "TV cost: " + getCost();
+    public String typo() {
+        return "TV";
     }
 }

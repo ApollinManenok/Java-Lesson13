@@ -1,8 +1,8 @@
 package by.itacademy.lesson13.domain.product;
 
 public class Laptop extends Product {
-    public Laptop()  {
-        super(0);
+    public Laptop() {
+        super(4300);
     }
 
     public Laptop(int cost) {
@@ -10,7 +10,7 @@ public class Laptop extends Product {
     }
 
     @Override
-    public String toString() {
-        return "Laptop cost: " + getCost();
+    public String typo() {
+        return "Laptop";
     }
 }
