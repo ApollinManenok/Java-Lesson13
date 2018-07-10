@@ -5,35 +5,40 @@ import by.itacademy.lesson13.domain.Buyer;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SemaphoreBuyerQueue implements BuyerQueue {
     private static final Logger LOGGER = Logger.getLogger(SemaphoreBuyerQueue.class.getName());
-    private Semaphore gettingSemaphore = new Semaphore(2);
-    private Semaphore addingSemaphore = new Semaphore(2);
+
+    private Semaphore addSemaphore = new Semaphore(1);
+    private Semaphore getSemaphore = new Semaphore(1);
     private final Queue<Buyer> buyers = new LinkedList<>();
 
     @Override
     public void addBuyer(Buyer buyer) {
-        addingSemaphore.acquireUninterruptibly();
         try {
+            addSemaphore.acquire();
             buyers.add(buyer);
             System.out.println("Buyer has come!");
+        } catch (InterruptedException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
         } finally {
-            gettingSemaphore.release();
+            getSemaphore.release();
         }
     }
 
     @Override
     public Buyer getBuyer() {
-        gettingSemaphore.acquireUninterruptibly();
-        Buyer buyer;
+        Buyer buyer = null;
         try {
-            do {
+            getSemaphore.acquire();
+            if (!buyers.isEmpty())
                 buyer = buyers.poll();
-            } while (buyer == null);
+        } catch (InterruptedException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
         } finally {
-            addingSemaphore.release();
+            addSemaphore.release();
         }
         return buyer;
     }
@@ -41,15 +46,29 @@ public class SemaphoreBuyerQueue implements BuyerQueue {
 
     @Override
     public void waitingEmpty() {
-        while (buyers.isEmpty()) {
-            addingSemaphore.release();
+        try {
+            getSemaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (buyers.isEmpty()) {
+            addSemaphore.release();
+        } else {
+            getSemaphore.release();
         }
     }
 
     @Override
     public void waitingFull() {
-        while (buyers.size() >= 5) {
-            gettingSemaphore.release();
+        try {
+            addSemaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (!buyers.isEmpty()) {
+            getSemaphore.release();
+        } else {
+            addSemaphore.release();
         }
     }
 

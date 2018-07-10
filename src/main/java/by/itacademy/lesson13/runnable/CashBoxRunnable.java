@@ -18,7 +18,9 @@ public class CashBoxRunnable implements Runnable {
         while (true) {
             queue.waitingEmpty();
             Buyer buyer = queue.getBuyer();
+
             cashbox.serve(buyer);
+
         }
     }
 }

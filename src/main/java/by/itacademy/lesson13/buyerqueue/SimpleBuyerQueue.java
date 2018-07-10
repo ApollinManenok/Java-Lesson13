@@ -22,10 +22,12 @@ public class SimpleBuyerQueue implements BuyerQueue {
 
     @Override
     public Buyer getBuyer() {
+        Buyer poll;
         synchronized (buyers) {
+            poll = buyers.poll();
             buyers.notify();
-            return buyers.poll();
         }
+        return poll;
     }
 
     @Override

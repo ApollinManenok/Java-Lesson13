@@ -11,3 +11,4 @@ bin
 RegText
 *.txt
 *.bin
+*.lck

@@ -11,9 +11,8 @@ public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
     public static void main(String[] args) {
-        Shop shop = null;
         try {
-            shop = new Shop(new BuyerQueueChoice().choose());
+            Shop shop = new Shop(new BuyerQueueChoice().choose());
             shop.service();
         } catch (RangeException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
