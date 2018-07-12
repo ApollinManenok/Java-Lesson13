@@ -24,6 +24,7 @@ public class SimpleBuyerQueue implements BuyerQueue {
     public Buyer getBuyer() {
         Buyer poll;
         synchronized (buyers) {
+            waitingEmpty();
             poll = buyers.poll();
             buyers.notify();
         }

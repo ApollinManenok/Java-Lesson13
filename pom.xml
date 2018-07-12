@@ -85,7 +85,7 @@
                     <executable>java</executable>
                     <arguments>
                         <argument>
-                            -Djava.util.logging.config.file=${basedir}/src/main/resources/logging.properties
+                            -Djava.util.logging.config.file=${project.build.outputDirectory}/logging.properties
                         </argument>
                         <argument>-classpath</argument>
                         <classpath/>

@@ -2,8 +2,6 @@ package by.itacademy.lesson13.buyerqueue;
 
 import by.itacademy.lesson13.domain.Buyer;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;

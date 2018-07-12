@@ -1,13 +1,7 @@
 package by.itacademy.lesson13.builders;
 
 import by.itacademy.lesson13.domain.Buyer;
-import by.itacademy.lesson13.domain.product.Battery;
-import by.itacademy.lesson13.domain.product.ComputerMouse;
-import by.itacademy.lesson13.domain.product.Headphones;
-import by.itacademy.lesson13.domain.product.Laptop;
-import by.itacademy.lesson13.domain.product.Phone;
-import by.itacademy.lesson13.domain.product.Product;
-import by.itacademy.lesson13.domain.product.TV;
+import by.itacademy.lesson13.domain.product.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
